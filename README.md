@@ -1,5 +1,5 @@
 # Guess The Word Discord Bot
-That is the bot that will scramble one word from list when you say
+That is the bot that will scramble one word from list when in discord chat you say
 
 !scramble
 
