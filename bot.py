@@ -33,7 +33,7 @@ async def scramble(ctx):
     try:
         msg = await bot.wait_for('message', check=check, timeout=35.0) #how much time for solving
     except asyncio.TimeoutError:
-        await ctx.send(f"Sorry, {ctx.author.mention}, you ran out of time!")
+        await ctx.send(f"Sorry, {ctx.author.mention}, you ran out of time! The word was {word}!")
     
     else:
         end_time = time.time() # Calculate the elapsed time and congratulate the user
