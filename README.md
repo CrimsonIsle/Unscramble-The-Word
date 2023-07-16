@@ -1,6 +1,6 @@
 # Unscramble The Word (discord bot)
 That is the bot that will scramble one word from list when someone says !scramble in discord chat.
-(this version instead takes words from massive on website, but still 1 word per line)
+(this version instead takes words from massive on website, but still 1 word per line, also it doesn't use 1,2,3 letter words, using only 4 and more)
 
 In discord chat where bot will be allowed to run say
 # !scramble
