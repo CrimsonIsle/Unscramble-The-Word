@@ -2,16 +2,17 @@ import discord
 import random
 import time
 import asyncio
+import requests
 
-
+from websites import URL
 from discord.ext import commands
 from yourtoken import BOT_TOKEN # Get token from file
 
 intents = discord.Intents.default()
 intents.message_content = True
 
-with open('words.txt', 'r') as f:
-    words = [line.strip() for line in f]
+response = requests.get(URL)
+words = [line.strip() for line in response.text.split('\n') if len(line.strip()) > 3]
 
 bot = commands.Bot(command_prefix="!", intents=intents)
 
@@ -41,7 +42,7 @@ async def scramble(ctx):
         elapsed_time = round(end_time - start_time, 2)
 
 
-    if {msg.author} == {ctx.author}:
+    if msg.author == ctx.author:
         await ctx.send(f'Congratulations, {msg.author.mention}! You unscrambled the word in {elapsed_time} seconds!')
     else:
         await ctx.send(f'Congratulations, {msg.author.mention}! You unscrambled {ctx.author.mention}\'s word in {elapsed_time} seconds!')
