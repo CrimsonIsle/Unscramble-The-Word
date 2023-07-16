@@ -41,7 +41,7 @@ async def scramble(ctx):
         elapsed_time = round(end_time - start_time, 2)
 
 
-    if {msg.author} == {ctx.author}:
+    if msg.author == ctx.author:
         await ctx.send(f'Congratulations, {msg.author.mention}! You unscrambled the word in {elapsed_time} seconds!')
     else:
         await ctx.send(f'Congratulations, {msg.author.mention}! You unscrambled {ctx.author.mention}\'s word in {elapsed_time} seconds!')
