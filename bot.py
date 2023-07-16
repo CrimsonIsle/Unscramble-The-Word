@@ -32,19 +32,19 @@ async def scramble(ctx):
         return msg.content.lower() == word.lower()
 
     try:
-        msg = await bot.wait_for('message', check=check, timeout=40.0) # Time for solving
-    except asyncio.TimeoutError:
-        await ctx.send(f"Sorry, {ctx.author.mention}, you ran out of time! The word was {word}!")
+        msg = await bot.wait_for('message', check=check, timeout=40.0)  # Time for solving
 
-    else:
-        end_time = time.time() # Calculate the elapsed time and congratulate the user
+        end_time = time.time()  # Calculate the elapsed time and congratulate the user
         elapsed_time = round(end_time - start_time, 2)
 
+        if msg.author == ctx.author:
+            await ctx.send(f'Congratulations, {msg.author.mention}! You unscrambled the word in {elapsed_time} seconds!')
+        else:
+            await ctx.send(
+                f'Congratulations, {msg.author.mention}! You unscrambled {ctx.author.mention}\'s word in {elapsed_time} seconds!')
 
-    if msg.author == ctx.author:
-        await ctx.send(f'Congratulations, {msg.author.mention}! You unscrambled the word in {elapsed_time} seconds!')
-    else:
-        await ctx.send(f'Congratulations, {msg.author.mention}! You unscrambled {ctx.author.mention}\'s word in {elapsed_time} seconds!')
+    except asyncio.TimeoutError:
+        await ctx.send(f"Sorry, {ctx.author.mention}, you ran out of time! The word was {word}!")
 
 
 
